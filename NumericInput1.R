@@ -5,17 +5,16 @@ library(dplyr)
 
 
 ui <- fluidPage(
-  numericInput("obs", "NUMERIC Input --- Observations:", 10, min = 1, max = 100),
-  textInput("formatNumber1", "TEXT Input --  Number should be formatted, e.g.5,000,000", value = 1000),
+  numericInput("obs", "Observations:", 10, min = 1, max = 100),
+  textInput("formatNumber1", "Number should be formatted, e.g.5,000,000", value = 1000),
   
   verbatimTextOutput("value"),
   textOutput("txtOutput")
 )
 server <- function(input, output,session) {
-  # session
   
   observe({
-    updateTextInput(session, "formatNumber1", "TEXT Input -- Number should be formatted, e.g.5,000,000", 
+    updateTextInput(session, "formatNumber1", "Number should be formatted, e.g.5,000,000", 
                     value = prettyNum(input$formatNumber1, big.mark=",", scientific=FALSE))
    
   })
